@@ -29,6 +29,13 @@ const Welcome = () => {
     
 
 
+  const handleChangeCategory = (categoryName:string)=>{
+   
+    setActiveCategory(categoryName)
+    fetchRecipies(categoryName)
+    
+  }
+
   const fetchCategories = async()=>{
     try {
       
@@ -54,11 +61,11 @@ const Welcome = () => {
       
       const res = await axios.get("https://www.themealdb.com/api/json/v1/1/filter.php?c="+categoryName)
 
-      console.log(res)
-
 
       if(res && res.data)
       {
+
+
         setRecipies(res.data.meals)
       }
     } catch (error) {
@@ -122,7 +129,7 @@ const Welcome = () => {
         {/* Categories */}
         <View>
          {
-            categories && categories.length > 0 && <Categories categories={categories} activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
+            categories && categories.length > 0 && <Categories categories={categories} activeCategory={activeCategory} handleChangeCategory={handleChangeCategory} />
          }
           
         </View>

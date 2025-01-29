@@ -9,12 +9,12 @@ import Animated, { FadeInDown } from "react-native-reanimated";
 import { TypeMealDbCategory } from "@/@types";
 
 interface CategoriesProps {
-  setActiveCategory: React.Dispatch<React.SetStateAction<string>>;
+  handleChangeCategory: (categoryName: string) => void
   activeCategory: string;
   categories:TypeMealDbCategory[];
 }
 
-const Categories = ({ activeCategory, setActiveCategory ,categories}: CategoriesProps) => {
+const Categories = ({ activeCategory, handleChangeCategory ,categories}: CategoriesProps) => {
   return (
     <Animated.View entering={FadeInDown.duration(500).springify()}> 
       <ScrollView
@@ -31,7 +31,7 @@ const Categories = ({ activeCategory, setActiveCategory ,categories}: Categories
             <TouchableOpacity
               key={category.idCategory}
               className={"flex items-center space-y-1 mr-4" }
-              onPress={() => setActiveCategory(category.strCategory)}
+              onPress={() => handleChangeCategory(category.strCategory)}
             >
               <View className={"rounded-full p-[6px] " + activeButtonClass}>
                 <Image
