@@ -37,7 +37,9 @@ const RecipeCard = ({item,index}:RecipeCardProps) => {
           style={{ width: '100%', height: index%3===0?hp(25): hp(35),borderRadius:35 }}
           className="bg-black/5"
         /> */}
-        <CachedImage uri={item.strMealThumb} style={{ width: '100%', height: index%3===0?hp(25): hp(35),borderRadius:35 }} className="bg-black/5"/>
+        <CachedImage uri={item.strMealThumb} style={{ width: '100%', height: index%3===0?hp(25): hp(35),borderRadius:35 }} className="bg-black/5"
+        sharedTransitionTag={item.strMeal}
+        />
 
         <Text className="font-rubik-semibold ml-2 text-neutral-600" style={{ fontSize: hp(1.5) }}>
           {item.strMeal.length > 20 ? item.strMeal.slice(0, 20) + "..." : item.strMeal}
